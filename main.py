@@ -1,8 +1,9 @@
-from fastapi import FastAPI
 
-app = FastAPI()
+from credvault.api import create_app
+
+app = create_app()
 
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+@app.get("/health")
+def health() -> dict[str, str]:
+    return {"status": "ok"}
